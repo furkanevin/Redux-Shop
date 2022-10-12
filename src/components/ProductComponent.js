@@ -27,61 +27,63 @@ const ProductComponent = () => {
     max: 10,
   };
   const products = useSelector((state) => state.allProducts.products);
-  const renderList = products.map((product) => {
-    const { id, title, image, price, category, description } = product;
-    return (
-      <div className="ondan" key={id}>
-        <div className="shop">
-          <span className="material-symbols-outlined">
-            shopping_cart_checkout
-          </span>
+  const renderList = products
+    .map((product) => {
+      const { id, title, image, price, category, description } = product;
+      return (
+        <div className="ondan" key={id}>
+          <div className="shop">
+            <span className="material-symbols-outlined">
+              shopping_cart_checkout
+            </span>
+          </div>
+          <Tilt className="container" options={options}>
+            <Link to={`/product/${id}`}>
+              <div className="card">
+                <div className="card-head">
+                  <img src={image} className="product-img" perspective="1000" />
+                  <div className="product-detail">
+                    <h2>{title}</h2> {description.slice(0, 140)}
+                  </div>
+                  <span className="back-text">{title.slice(0, 3)}</span>
+                </div>
+                <div className="card-body">
+                  <div className="product-desc">
+                    <span className="product-title">
+                      {cutString(title, 29)}
+                      <span className="badge">New</span>
+                    </span>
+                    <span className="product-caption">{category}</span>
+                  </div>
+                  <div className="product-properties">
+                    <span className="product-color">
+                      <h4>Colour</h4>
+                      <ul className="ul-color">
+                        <li>
+                          <span className="orange "></span>
+                        </li>
+                        <li>
+                          <span className="green"></span>
+                        </li>
+                        <li>
+                          <span className="yellow"></span>
+                        </li>
+                      </ul>
+                    </span>
+                    <span className="product-price">
+                      <p>
+                        USD<b>{price}$</b>
+                      </p>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </Tilt>
         </div>
-        <Tilt className="container" options={options}>
-          <Link to={`/product/${id}`}>
-            <div className="card">
-              <div className="card-head">
-                <img src={image} className="product-img" perspective="1000" />
-                <div className="product-detail">
-                  <h2>{title}</h2> {description.slice(0, 140)}
-                </div>
-                <span className="back-text">{title.slice(0, 3)}</span>
-              </div>
-              <div className="card-body">
-                <div className="product-desc">
-                  <span className="product-title">
-                    {cutString(title, 29)}
-                    <span className="badge">New</span>
-                  </span>
-                  <span className="product-caption">{category}</span>
-                </div>
-                <div className="product-properties">
-                  <span className="product-color">
-                    <h4>Colour</h4>
-                    <ul className="ul-color">
-                      <li>
-                        <span className="orange "></span>
-                      </li>
-                      <li>
-                        <span className="green"></span>
-                      </li>
-                      <li>
-                        <span className="yellow"></span>
-                      </li>
-                    </ul>
-                  </span>
-                  <span className="product-price">
-                    <p>
-                      USD<b>{price}$</b>
-                    </p>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </Tilt>
-      </div>
-    );
-  });
+      );
+    })
+    .slice(0, 9);
   return <>{renderList}</>;
 };
 

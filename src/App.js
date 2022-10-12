@@ -11,16 +11,13 @@ import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" exact element={<ProductListing />} />
-          <Route path="/product/:product" element={<ProductDetails />} />
-          <Route>404 Not Found!</Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" element={<ProductListing />} />
+        <Route path="/product/:product" element={<ProductDetails />} />
+      </Routes>
+    </div>
   );
 }
 
