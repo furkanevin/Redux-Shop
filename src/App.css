@@ -27,12 +27,12 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 200px;
-  padding: 100px 200px;
+  padding: 100px 100px;
 }
 
 .shop {
   position: absolute;
-  width: 80px;
+  width: 100px;
   color: white;
   background-color: #f35e3d;
   cursor: pointer;
@@ -91,7 +91,6 @@ body {
   transition: all 0.3s;
   opacity: 1;
   transform: translateZ(30px);
-  transform-origin: top;
 }
 
 .product-detail {
@@ -240,3 +239,22 @@ body {
 }
 
 /*! DETAILS */
+.single-product-detail {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+}
+.single-detail-img {
+  width: 50%;
+  height: 100%;
+  border: 1px solid;
+}
+.single-detail-img img {
+  width: 100px;
+  height: 100px;
+}
+.single-detail-content {
+  width: 50%;
+  height: 100%;
+  border: 1px solid;
+}

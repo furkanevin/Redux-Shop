@@ -16,7 +16,7 @@ $discount: #fe6168;
 .single-product-detail {
   display: flex;
   align-items: center;
-  margin: 20vh auto;
+  margin: 5vh auto;
   body {
     background-color: $bg;
     height: 100vh;
@@ -67,20 +67,13 @@ $discount: #fe6168;
       margin: auto;
       height: 100%;
       justify-content: center;
-      .product-logo {
-        color: white;
-        text-transform: uppercase;
-        font-weight: 200;
-        letter-spacing: 10px;
-        font-size: medium;
-      }
     }
     &-pic {
       max-width: 180px;
       filter: drop-shadow(-6px 40px 23px rgba(black, 0.5));
       width: 60%;
       height: 60%;
-      margin-top: 20px;
+      margin-top: 40px;
     }
     &-details {
       padding: 40px;
@@ -219,9 +212,9 @@ $discount: #fe6168;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: -30px;
     > button {
       display: flex;
+      position: absolute;
       border: 0;
       padding: 15px 25px;
       align-items: center;

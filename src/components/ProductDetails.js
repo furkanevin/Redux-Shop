@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectedProduct,
@@ -14,30 +15,29 @@ function cutString(s, n) {
 
 const ProductDetails = () => {
   //! yappp
-  const productId = window.location.href;
-  const newId = productId.charAt(productId.length - 1);
 
+  const routeParams = useParams();
   //! yappp
 
   let product = useSelector((state) => state.product);
   const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
-  const fetchProductDetail = async (id) => {
+
+  const fetchProductDetail = async (routeParams) => {
     const response = await axios
-      .get(`https://fakestoreapi.com/products/${id}`)
+      .get(`https://fakestoreapi.com/products/${routeParams.product}`)
       .catch((err) => {
         console.log('Err: ', err);
       });
     dispatch(selectedProduct(response.data));
-    console.log(id);
   };
 
   useEffect(() => {
-    fetchProductDetail(newId);
+    fetchProductDetail(routeParams);
     return () => {
       dispatch(removeSelectedProduct());
     };
-  }, [newId]);
+  }, [routeParams]);
   function cutString(s, n) {
     var cut = s.indexOf(' ', n);
     if (cut == -1) return s;
@@ -47,8 +47,12 @@ const ProductDetails = () => {
     <div className="single-product-detail">
       <div className="container">
         <div className="product-image">
-          <p className="product-logo">{title?.slice(0, 3)}</p>
-          <img src={image} className="product-pic" />
+          <img
+            src="http://co0kie.github.io/codepen/nike-product-page/nikeLogo.png"
+            alt=""
+            className="product-logo"
+          />
+          <img src={image} alt="" className="product-pic" />
           <div className="dots">
             <a href="#!" className="active">
               <i>1</i>
@@ -66,10 +70,10 @@ const ProductDetails = () => {
         </div>
         <div className="product-details">
           <header>
-            <h1 className="title">{title}</h1>
+            <h1 className="title">{title?.slice(0, 50)}</h1>
             <span className="colorCat">{category}</span>
             <div className="price">
-              <span className="before">{price + 11.1}</span>
+              <span className="before">$150</span>
               <span className="current">$ {price}</span>
             </div>
             <div className="rate">
@@ -88,7 +92,7 @@ const ProductDetails = () => {
           </header>
           <article>
             <h5>Description</h5>
-            <p>{description}</p>
+            <p>{description?.slice(0, 200)}</p>
           </article>
           <div className="controls">
             <div className="color">
