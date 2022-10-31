@@ -73,7 +73,7 @@ const ProductDetails = () => {
             <h1 className="title">{title?.slice(0, 50)}</h1>
             <span className="colorCat">{category}</span>
             <div className="price">
-              <span className="before">$150</span>
+              <span className="before">$ {price + 24.9}</span>
               <span className="current">$ {price}</span>
             </div>
             <div className="rate">

@@ -27,6 +27,7 @@ const ProductComponent = () => {
     speed: 500,
     max: 10,
   };
+  
   const products = useSelector((state) => state.allProducts.products);
   const renderList = products.map((product) => {
     const { id, title, image, price, category, description } = product;
